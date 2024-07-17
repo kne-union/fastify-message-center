@@ -1,19 +1,10 @@
 const fastify = require('fastify')({
   logger: true, querystringParser: str => require('qs').parse(str)
 });
-const {promises: fs} = require('fs');
+
 const path = require('path');
-const packageJson = require('./package.json');
 
-fastify.register(require('@fastify/swagger'), {
-  openapi: {
-    info: {
-      title: 'fastify-message-center', description: '消息中心', version: packageJson.version
-    }, components: {}
-  }
-});
-
-const sqliteStorage = path.resolve('./database.sqlite');
+const sqliteStorage = path.resolve('./tests/database.sqlite');
 
 fastify.register(require('@kne/fastify-sequelize'), {
   db: {
@@ -23,7 +14,7 @@ fastify.register(require('@kne/fastify-sequelize'), {
   }
 });
 
-fastify.register(require('./index'), {
+fastify.register(require('../index'), {
   host: "smtp.163.com",
   port: 465,
   auth: {
@@ -50,10 +41,8 @@ fastify.register(require('fastify-plugin')(async (fastify) => {
   await fastify.sequelize.sync();
 }));
 
-fastify.ready().then(async () => {
-  const api = fastify.swagger();
-  await fs.writeFile(path.resolve(__dirname, './open-api.json'), JSON.stringify(api, null, 2));
-  const converter = require('widdershins');
-  const md = await converter.convert(api, {});
-  await fs.writeFile(path.resolve(__dirname, './doc/api.md'), md);
+
+fastify.listen({port: 8046}, (err, address) => {
+  if (err) throw err;
+  // Server is now listening on ${address}
 });

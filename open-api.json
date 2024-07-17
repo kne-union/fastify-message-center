@@ -9,7 +9,31 @@
     "schemas": {}
   },
   "paths": {
-    "/api/v1/welcome": {
+    "/api/v1/sendEmail": {
+      "get": {
+        "summary": "接口主题",
+        "description": "接口说明",
+        "responses": {
+          "200": {
+            "description": "返回值说明",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sendMessage": {
       "get": {
         "summary": "接口主题",
         "description": "接口说明",
