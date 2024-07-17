@@ -131,3 +131,5 @@ pnpm-lock.yaml
 package-lock.json
 static/
 data.db
+database.sqlite
+tests/static/
