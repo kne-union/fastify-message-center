@@ -31,9 +31,9 @@ headingLevel: 2
 
 `GET /api/v1/sendEmail`
 
-*接口主题*
+*发送邮件*
 
-接口说明
+发送邮件
 
 > Example responses
 
@@ -73,9 +73,9 @@ This operation does not require authentication
 
 `GET /api/v1/sendMessage`
 
-*接口主题*
+*发送信息*
 
-接口说明
+发送信息
 
 > Example responses
 

@@ -29,7 +29,7 @@ module.exports = fp(async (fastify, options) => {
     },
     async request => {
       return {
-        message: await services.sendEmail(
+        message: await services.message.sendEmail(
           Object.assign(
             {},
             {
@@ -70,7 +70,7 @@ module.exports = fp(async (fastify, options) => {
     },
     async request => {
       return {
-        message: await services.sendMessage(
+        message: await services.message.sendMessage(
           Object.assign(
             {},
             {

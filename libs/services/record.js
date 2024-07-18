@@ -12,5 +12,7 @@ module.exports = fp(async fastify => {
     });
   };
 
-  Object.assign(fastify.messageCenter.services, { addRecord });
+  services.record = {
+    addRecord
+  };
 });

@@ -39,12 +39,14 @@ module.exports = fp(async (fastify, options) => {
       status: status || 0,
       messageId
     });
-    const record = await services.addRecord({
+    const record = await services.record.addRecord({
       messageType,
       type,
       channel
     });
     await record.update({ belongToMessageId: message.id });
+
+    return Object.assign({}, message.get({ pain: true }), { id: message.id });
   };
 
   const sendMessage = async ({ messageType, type, to, channel, props }) => {
@@ -53,7 +55,7 @@ module.exports = fp(async (fastify, options) => {
       const currentTemplate = template[type];
       const content = tpl(currentTemplate.content)(props);
       const info = await sendEmail({ subject: currentTemplate.subject, [currentTemplate.type || 'html']: content, to });
-      await services.addMessage({
+      await services.message.addMessage({
         messageType,
         type,
         channel,
@@ -66,5 +68,9 @@ module.exports = fp(async (fastify, options) => {
     }
   };
 
-  Object.assign(fastify.messageCenter.services, { sendEmail, sendMessage, addMessage });
+  services.message = {
+    sendEmail,
+    sendMessage,
+    addMessage
+  };
 });
