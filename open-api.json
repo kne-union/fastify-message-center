@@ -21,7 +21,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
+                    "data": {
                       "type": "string",
                       "description": "信息"
                     }
@@ -45,7 +45,31 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
+                    "data": {
+                      "type": "string",
+                      "description": "信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/resendMessage": {
+      "get": {
+        "summary": "重新发送信息",
+        "description": "重新发送信息",
+        "responses": {
+          "200": {
+            "description": "返回值说明",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
                       "type": "string",
                       "description": "信息"
                     }
@@ -59,6 +83,41 @@
     },
     "/api/v1/recordList": {
       "get": {
+        "summary": "获取消息纪录列表",
+        "tags": [
+          "消息纪录"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            },
+            "in": "query",
+            "name": "filter",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "currentPage",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "perPage",
+            "required": false
+          }
+        ],
         "responses": {
           "200": {
             "description": "Default Response"
