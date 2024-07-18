@@ -23,6 +23,12 @@ module.exports = ({ DataTypes }) => {
           fields: ['deleted_at']
         }
       ]
+    },
+    associate: ({ record, message }) => {
+      message.hasMany(record, {
+        targetKey: 'messageId',
+        constraints: false
+      });
     }
   };
 };

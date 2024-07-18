@@ -30,14 +30,13 @@ module.exports = fp(async (fastify, options) => {
     return info;
   };
 
-  const addMessage = async ({ status, messageType, type, channel, email, phone, content, subject, messageId }) => {
+  const addMessage = async ({ status, messageType, type, channel, email, phone, content, subject }) => {
     const message = await models.message.create({
       email,
       phone,
       content,
       subject,
-      status: status || 0,
-      messageId
+      status: status || 0
     });
     const record = await services.record.addRecord({
       messageType,
@@ -61,16 +60,27 @@ module.exports = fp(async (fastify, options) => {
         channel,
         subject: currentTemplate.subject,
         content,
-        email: to,
-        messageId: info.messageId
+        email: to
       });
       return info.response;
     }
   };
 
+  const resendMessage = async ({ id }) => {
+    const { messageType, channel, type } = await models.record.findOne({ where: { messageId: id } });
+    const record = await services.record.addRecord({
+      messageType,
+      type,
+      channel
+    });
+    await record.update({ messageId: id });
+    return '已重新发送';
+  };
+
   services.message = {
     sendEmail,
     sendMessage,
-    addMessage
+    addMessage,
+    resendMessage
   };
 });
