@@ -1,14 +1,14 @@
 const fp = require('fastify-plugin');
 
 module.exports = fp(async (fastify, options) => {
-  const { services } = fastify.messageCenter;
+  const { models, services } = fastify.messageCenter;
   fastify.get(
     `${options.prefix}/sendEmail`,
     {
       onRequest: [],
       schema: {
-        description: '接口说明',
-        summary: '接口主题',
+        description: '发送邮件',
+        summary: '发送邮件',
         query: {},
         response: {
           200: {
@@ -29,7 +29,7 @@ module.exports = fp(async (fastify, options) => {
     },
     async request => {
       return {
-        message: await services.sendEmail(
+        message: await services.message.sendEmail(
           Object.assign(
             {},
             {
@@ -48,8 +48,8 @@ module.exports = fp(async (fastify, options) => {
     {
       onRequest: [],
       schema: {
-        description: '接口说明',
-        summary: '接口主题',
+        description: '发送信息',
+        summary: '发送信息',
         query: {},
         response: {
           200: {
@@ -70,13 +70,13 @@ module.exports = fp(async (fastify, options) => {
     },
     async request => {
       return {
-        message: await services.sendMessage(
+        message: await services.message.sendMessage(
           Object.assign(
             {},
             {
               messageType: 'LOGIN_VERIFY',
               type: 'EMAIL',
-              to: '2283785225@qq.com',
+              to: '228ssss25@qq.com',
               props: {
                 name: 'Meetacoo',
                 code: '888888'

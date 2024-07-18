@@ -54,9 +54,9 @@ headingLevel: 2
 
 `GET /api/v1/sendEmail`
 
-*接口主题*
+*发送邮件*
 
-接口说明
+发送邮件
 
 > Example responses
 
@@ -96,9 +96,9 @@ This operation does not require authentication
 
 `GET /api/v1/sendMessage`
 
-*接口主题*
+*发送信息*
 
-接口说明
+发送信息
 
 > Example responses
 
@@ -129,6 +129,20 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» message|string|false|none|信息|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_recordList
+
+`GET /api/v1/recordList`
+
+<h3 id="get__api_v1_recordlist-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
 
 <aside class="success">
 This operation does not require authentication

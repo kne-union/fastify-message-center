@@ -16,14 +16,14 @@ module.exports = fp(async (fastify, options) => {
     options,
     name: 'messageCenter',
     modules: [
-      ['controllers', path.resolve(__dirname, './libs/controllers.js')],
       [
         'models',
         await fastify.sequelize.addModels(path.resolve(__dirname, './libs/models'), {
           prefix: options.dbTableNamePrefix
         })
       ],
-      ['services', path.resolve(__dirname, './libs/services.js')]
+      ['services', path.resolve(__dirname, './libs/services')],
+      ['controllers', path.resolve(__dirname, './libs/controllers')]
     ]
   });
 });
