@@ -2,13 +2,38 @@ const fp = require('fastify-plugin');
 
 module.exports = fp(async (fastify, options) => {
   const { models, services } = fastify.messageCenter;
+
+  fastify.get(
+    `${options.prefix}/record`,
+    {
+      onRequest: [],
+      schema: {
+        tags: ['消息记录'],
+        description: '获取单条消息记录',
+        summary: '获取单条消息记录',
+        query: {
+          type: 'object',
+          required: ['id'],
+          properties: {
+            id: { type: 'string' }
+          }
+        }
+      }
+    },
+    async request => {
+      return {
+        data: await services.record.getRecord(request.query)
+      };
+    }
+  );
+
   fastify.get(
     `${options.prefix}/recordList`,
     {
       onRequest: [],
       schema: {
-        tags: ['消息纪录'],
-        summary: '获取消息纪录列表',
+        tags: ['消息记录'],
+        summary: '获取消息记录列表',
         query: {
           type: 'object',
           properties: {

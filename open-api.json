@@ -81,11 +81,73 @@
         }
       }
     },
+    "/api/v1/message": {
+      "get": {
+        "summary": "获取单条消息",
+        "tags": [
+          "消息"
+        ],
+        "description": "获取单条消息",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/messageList": {
+      "get": {
+        "summary": "获取消息列表",
+        "tags": [
+          "消息"
+        ],
+        "description": "获取消息列表",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/record": {
+      "get": {
+        "summary": "获取单条消息记录",
+        "tags": [
+          "消息记录"
+        ],
+        "description": "获取单条消息记录",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
     "/api/v1/recordList": {
       "get": {
-        "summary": "获取消息纪录列表",
+        "summary": "获取消息记录列表",
         "tags": [
-          "消息纪录"
+          "消息记录"
         ],
         "parameters": [
           {
