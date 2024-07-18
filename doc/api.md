@@ -43,7 +43,7 @@ headingLevel: 2
 {
   "type": "object",
   "properties": {
-    "message": {
+    "data": {
       "type": "string",
       "description": "信息"
     }
@@ -63,7 +63,7 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» message|string|false|none|信息|
+|» data|string|false|none|信息|
 
 <aside class="success">
 This operation does not require authentication
@@ -85,7 +85,7 @@ This operation does not require authentication
 {
   "type": "object",
   "properties": {
-    "message": {
+    "data": {
       "type": "string",
       "description": "信息"
     }
@@ -105,15 +105,69 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» message|string|false|none|信息|
+|» data|string|false|none|信息|
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
+## get__api_v1_resendMessage
+
+`GET /api/v1/resendMessage`
+
+*重新发送信息*
+
+重新发送信息
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "string",
+      "description": "信息"
+    }
+  }
+}
+```
+
+<h3 id="get__api_v1_resendmessage-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|返回值说明|Inline|
+
+<h3 id="get__api_v1_resendmessage-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» data|string|false|none|信息|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="fastify-message-center--">消息纪录</h1>
+
 ## get__api_v1_recordList
 
 `GET /api/v1/recordList`
+
+*获取消息纪录列表*
+
+<h3 id="get__api_v1_recordlist-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|filter|query|object|false|none|
+|currentPage|query|number|false|none|
+|perPage|query|number|false|none|
 
 <h3 id="get__api_v1_recordlist-responses">Responses</h3>
 

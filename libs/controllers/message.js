@@ -59,7 +59,7 @@ module.exports = fp(async (fastify, options) => {
                 schema: {
                   type: 'object',
                   properties: {
-                    message: { type: 'string', description: '信息' }
+                    data: { type: 'string', description: '信息' }
                   }
                 }
               }
