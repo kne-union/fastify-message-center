@@ -78,10 +78,33 @@ module.exports = fp(async (fastify, options) => {
     return '已重新发送';
   };
 
+  const getMessage = async filter => {
+    const message = await models.message.findOne({
+      include: [
+        {
+          model: models.record
+        }
+      ],
+      where: filter
+    });
+    return message;
+  };
+
+  const getMessageList = async ({ filter, currentPage, perPage }) => {
+    const { rows } = await models.message.findAndCountAll({
+      where: filter,
+      offset: perPage * (currentPage - 1),
+      limit: perPage
+    });
+    return { pageData: rows, totalCount: rows.length };
+  };
+
   services.message = {
     sendEmail,
     sendMessage,
     addMessage,
-    resendMessage
+    resendMessage,
+    getMessage,
+    getMessageList
   };
 });

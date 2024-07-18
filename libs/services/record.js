@@ -11,22 +11,30 @@ module.exports = fp(async fastify => {
     });
   };
 
-  const getRecordList = async ({ filter, currentPage, perPage }) => {
-    const { rows } = await models.message.findAndCountAll({
+  const getRecord = async filter => {
+    const record = await models.record.findOne({
       include: [
         {
-          model: models.record
+          model: models.message
         }
       ],
+      where: filter
+    });
+    return record;
+  };
+
+  const getRecordList = async ({ filter, currentPage, perPage }) => {
+    const { count, rows } = await models.record.findAndCountAll({
       where: filter,
       offset: perPage * (currentPage - 1),
       limit: perPage
     });
-    return { pageData: rows, totalCount: rows.length };
+    return { pageData: rows, totalCount: count };
   };
 
   services.record = {
     addRecord,
+    getRecord,
     getRecordList
   };
 });

@@ -119,4 +119,53 @@ module.exports = fp(async (fastify, options) => {
       };
     }
   );
+
+  fastify.get(
+    `${options.prefix}/message`,
+    {
+      onRequest: [],
+      schema: {
+        tags: ['消息'],
+        description: '获取单条消息',
+        summary: '获取单条消息',
+        query: {
+          type: 'object',
+          required: ['id'],
+          properties: {
+            id: { type: 'string' }
+          }
+        }
+      }
+    },
+    async request => {
+      return {
+        data: await services.message.getMessage(request.query)
+      };
+    }
+  );
+
+  fastify.get(
+    `${options.prefix}/messageList`,
+    {
+      onRequest: [],
+      schema: {
+        tags: ['消息'],
+        description: '获取消息列表',
+        summary: '获取消息列表',
+        query: {}
+      }
+    },
+    async request => {
+      const { perPage, currentPage, ...filter } = Object.assign(
+        {
+          perPage: 20,
+          currentPage: 1
+        },
+        request.query
+      );
+      return {
+        data: await services.message.getMessageList({ filter, perPage, currentPage })
+      };
+    }
+  );
 });
