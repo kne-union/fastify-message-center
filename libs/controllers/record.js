@@ -11,7 +11,7 @@ module.exports = fp(async (fastify, options) => {
       request.query
     );
     return {
-      message: await services.record.getRecordList({ filter, perPage, currentPage })
+      data: await services.record.getRecordList({ filter, perPage, currentPage })
     };
   });
 });

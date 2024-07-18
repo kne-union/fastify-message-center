@@ -18,7 +18,7 @@ module.exports = fp(async (fastify, options) => {
                 schema: {
                   type: 'object',
                   properties: {
-                    message: { type: 'string', description: '信息' }
+                    data: { type: 'string', description: '信息' }
                   }
                 }
               }
@@ -29,7 +29,7 @@ module.exports = fp(async (fastify, options) => {
     },
     async request => {
       return {
-        message: await services.message.sendEmail(
+        data: await services.message.sendEmail(
           Object.assign(
             {},
             {
@@ -70,7 +70,7 @@ module.exports = fp(async (fastify, options) => {
     },
     async request => {
       return {
-        message: await services.message.sendMessage(
+        data: await services.message.sendMessage(
           Object.assign(
             {},
             {
@@ -85,6 +85,37 @@ module.exports = fp(async (fastify, options) => {
             request.params
           )
         )
+      };
+    }
+  );
+  fastify.get(
+    `${options.prefix}/resendMessage`,
+    {
+      onRequest: [],
+      schema: {
+        description: '重新发送信息',
+        summary: '重新发送信息',
+        query: {},
+        response: {
+          200: {
+            description: '返回值说明',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    data: { type: 'string', description: '信息' }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    async request => {
+      return {
+        data: await services.message.resendMessage(request.query)
       };
     }
   );
