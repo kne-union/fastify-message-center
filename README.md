@@ -176,13 +176,81 @@ Status Code **200**
 This operation does not require authentication
 </aside>
 
-<h1 id="fastify-message-center--">消息纪录</h1>
+<h1 id="fastify-message-center--">消息</h1>
+
+## get__api_v1_message
+
+`GET /api/v1/message`
+
+*获取单条消息*
+
+获取单条消息
+
+<h3 id="get__api_v1_message-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|query|string|true|none|
+
+<h3 id="get__api_v1_message-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_messageList
+
+`GET /api/v1/messageList`
+
+*获取消息列表*
+
+获取消息列表
+
+<h3 id="get__api_v1_messagelist-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="fastify-message-center--">消息记录</h1>
+
+## get__api_v1_record
+
+`GET /api/v1/record`
+
+*获取单条消息记录*
+
+获取单条消息记录
+
+<h3 id="get__api_v1_record-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|query|string|true|none|
+
+<h3 id="get__api_v1_record-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
 
 ## get__api_v1_recordList
 
 `GET /api/v1/recordList`
 
-*获取消息纪录列表*
+*获取消息记录列表*
 
 <h3 id="get__api_v1_recordlist-parameters">Parameters</h3>
 
