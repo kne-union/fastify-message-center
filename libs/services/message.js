@@ -27,7 +27,7 @@ module.exports = fp(async (fastify, options) => {
       html // html body
     });
 
-    return info;
+    return info.response;
   };
 
   const addMessage = async ({ status, messageType, type, channel, email, phone, content, subject }) => {
@@ -62,7 +62,8 @@ module.exports = fp(async (fastify, options) => {
         content,
         email: to
       });
-      return info.response;
+      console.log('info-----------\n', info);
+      return info;
     }
   };
 

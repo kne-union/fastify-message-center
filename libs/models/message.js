@@ -13,8 +13,7 @@ module.exports = ({ DataTypes }) => {
       },
       email: DataTypes.STRING, // 收件人邮箱
       phone: DataTypes.STRING, // 收件人电话号
-      content: DataTypes.STRING, // 发送内容
-      messageId: DataTypes.STRING // 发送信息ID
+      content: DataTypes.STRING // 发送内容
     },
     options: {
       indexes: [
