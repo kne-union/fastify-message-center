@@ -44,7 +44,7 @@ module.exports = fp(async (fastify, options) => {
       type,
       channel
     });
-    await record.update({ belongToMessageId: message.id });
+    await record.update({ messageId: message.id });
 
     return Object.assign({}, message.get({ pain: true }), { id: message.id });
   };
