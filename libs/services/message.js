@@ -62,7 +62,6 @@ module.exports = fp(async (fastify, options) => {
         content,
         email: to
       });
-      console.log('info-----------\n', info);
       return info;
     }
   };

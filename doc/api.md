@@ -247,6 +247,30 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
+## get__api_v1_template_get
+
+`GET /api/v1/template/get`
+
+*获取单条模板*
+
+获取单条模板
+
+<h3 id="get__api_v1_template_get-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|query|string|true|none|
+
+<h3 id="get__api_v1_template_get-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 <h1 id="fastify-message-center--">模板</h1>
 
 ## post__api_v1_template_add

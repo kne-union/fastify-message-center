@@ -226,6 +226,30 @@
           }
         }
       }
+    },
+    "/api/v1/template/get": {
+      "get": {
+        "summary": "获取单条模板",
+        "tags": [
+          "消息记录"
+        ],
+        "description": "获取单条模板",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
     }
   }
 }

@@ -2,7 +2,6 @@ const fp = require('fastify-plugin');
 
 module.exports = fp(async (fastify, options) => {
   const { models, services } = fastify.messageCenter;
-  // console.log('services\n', services);
   fastify.post(
     `${options.prefix}/template/add`,
     {
@@ -35,6 +34,30 @@ module.exports = fp(async (fastify, options) => {
             request.body
           )
         )
+      };
+    }
+  );
+
+  fastify.get(
+    `${options.prefix}/template/get`,
+    {
+      onRequest: [],
+      schema: {
+        tags: ['消息记录'],
+        description: '获取单条模板',
+        summary: '获取单条模板',
+        query: {
+          type: 'object',
+          required: ['id'],
+          properties: {
+            id: { type: 'string' }
+          }
+        }
+      }
+    },
+    async request => {
+      return {
+        data: await services.template.getTemplate(request.query)
       };
     }
   );
