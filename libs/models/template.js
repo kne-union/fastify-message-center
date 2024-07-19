@@ -6,17 +6,15 @@ module.exports = ({ DataTypes }) => {
         autoIncrement: true,
         primaryKey: true
       },
-      uuid: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4
-      },
+      name: DataTypes.STRING, // 模板名称
+      type: DataTypes.STRING, // 模板类型 EMAIL,SMS
       template: DataTypes.STRING // 发送模板
     },
     options: {
       indexes: [
         {
           unique: true,
-          fields: ['uuid', 'deleted_at']
+          fields: ['deleted_at']
         }
       ]
     }
