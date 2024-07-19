@@ -1,9 +1,29 @@
 const fp = require('fastify-plugin');
+const get = require('lodash/get');
 
 module.exports = fp(async fastify => {
   const { models, services } = fastify.messageCenter;
 
+  const templateIsExists = async ({ name }, currentUser) => {
+    const query = [];
+    if (name && name !== get(currentUser, 'name')) {
+      query.push({ name });
+    }
+
+    return (
+      (await models.template.count({
+        where: {
+          [fastify.sequelize.Sequelize.Op.or]: query
+        }
+      })) > 0
+    );
+  };
+
   const addTemplate = async ({ name, type, template }) => {
+    if ((await templateIsExists({ name })) > 0) {
+      throw new Error('模板名称不能重复');
+    }
+
     return await models.template.create({
       name,
       type,
@@ -12,11 +32,20 @@ module.exports = fp(async fastify => {
   };
 
   const getTemplate = async ({ id }) => {
-    return await models.template.findByPk(id);
+    const curTemplate = await models.template.findByPk(id);
+
+    if (!curTemplate) {
+      throw new Error('模板不存在');
+    }
+    return curTemplate;
   };
 
   const updateTemplate = async ({ id, name, type, template }) => {
-    const curTemplate = getTemplate({ id });
+    const curTemplate = await getTemplate({ id });
+
+    if ((await templateIsExists({ name }, curTemplate)) > 0) {
+      throw new Error('模板名称不能重复');
+    }
     return await curTemplate.update({
       name,
       type,
