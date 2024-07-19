@@ -44,7 +44,7 @@ module.exports = fp(async (fastify, options) => {
     }
   );
   fastify.get(
-    `${options.prefix}/sendMessage`,
+    `${options.prefix}/message/send`,
     {
       onRequest: [],
       schema: {
@@ -89,7 +89,7 @@ module.exports = fp(async (fastify, options) => {
     }
   );
   fastify.get(
-    `${options.prefix}/resendMessage`,
+    `${options.prefix}/message/resend`,
     {
       onRequest: [],
       schema: {
@@ -145,7 +145,7 @@ module.exports = fp(async (fastify, options) => {
   );
 
   fastify.get(
-    `${options.prefix}/messageList`,
+    `${options.prefix}/message/list`,
     {
       onRequest: [],
       schema: {

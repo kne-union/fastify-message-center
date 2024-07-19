@@ -28,7 +28,7 @@ module.exports = fp(async (fastify, options) => {
   );
 
   fastify.get(
-    `${options.prefix}/recordList`,
+    `${options.prefix}/record/list`,
     {
       onRequest: [],
       schema: {
