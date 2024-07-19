@@ -7,7 +7,10 @@ module.exports = ({ DataTypes }) => {
         primaryKey: true
       },
       name: DataTypes.STRING, // 模板名称
-      type: DataTypes.STRING, // 模板类型 EMAIL,SMS
+      type: {
+        type: DataTypes.ENUM,
+        values: ['EMAIL', 'SMS']
+      }, // 模板类型
       template: DataTypes.STRING // 发送模板
     },
     options: {

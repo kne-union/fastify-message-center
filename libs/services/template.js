@@ -53,10 +53,20 @@ module.exports = fp(async fastify => {
     });
   };
 
+  const getTemplateList = async ({ filter, currentPage, perPage }) => {
+    const { rows } = await models.template.findAndCountAll({
+      where: filter,
+      offset: perPage * (currentPage - 1),
+      limit: perPage
+    });
+    return { pageData: rows, totalCount: rows.length };
+  };
+
   services.template = {
     templateIsExists,
     addTemplate,
     getTemplate,
-    updateTemplate
+    updateTemplate,
+    getTemplateList
   };
 });
