@@ -22,19 +22,17 @@ module.exports = fp(async (fastify, options) => {
       }
     },
     async request => {
-      return {
-        data: await services.template.addTemplate(
-          Object.assign(
-            {},
-            {
-              name: 'test-template',
-              type: 'SMS',
-              template: '【<%=companyName%>】您的验证码是：<%=code%>'
-            },
-            request.body
-          )
+      return await services.template.addTemplate(
+        Object.assign(
+          {},
+          {
+            name: 'test-template',
+            type: 'SMS',
+            template: '【<%=companyName%>】您的验证码是：<%=code%>'
+          },
+          request.body
         )
-      };
+      );
     }
   );
 
@@ -56,9 +54,7 @@ module.exports = fp(async (fastify, options) => {
       }
     },
     async request => {
-      return {
-        data: await services.template.getTemplate(request.query)
-      };
+      return await services.template.getTemplate(request.query);
     }
   );
 
@@ -83,9 +79,7 @@ module.exports = fp(async (fastify, options) => {
       }
     },
     async request => {
-      return {
-        data: await services.template.updateTemplate(request.body)
-      };
+      return await services.template.updateTemplate(request.body);
     }
   );
 
@@ -122,9 +116,7 @@ module.exports = fp(async (fastify, options) => {
         },
         request.query
       );
-      return {
-        data: await services.template.getTemplateList({ filter, perPage, currentPage })
-      };
+      return await services.template.getTemplateList({ filter, perPage, currentPage });
     }
   );
 });
