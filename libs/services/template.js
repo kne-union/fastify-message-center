@@ -54,6 +54,7 @@ module.exports = fp(async fastify => {
   };
 
   services.template = {
+    templateIsExists,
     addTemplate,
     getTemplate,
     updateTemplate
