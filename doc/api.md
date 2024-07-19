@@ -155,21 +155,21 @@ This operation does not require authentication
 
 <h1 id="fastify-message-center--">消息</h1>
 
-## get__api_v1_message
+## get__api_v1_message_get
 
-`GET /api/v1/message`
+`GET /api/v1/message/get`
 
 *获取单条消息*
 
 获取单条消息
 
-<h3 id="get__api_v1_message-parameters">Parameters</h3>
+<h3 id="get__api_v1_message_get-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|query|string|true|none|
 
-<h3 id="get__api_v1_message-responses">Responses</h3>
+<h3 id="get__api_v1_message_get-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -199,21 +199,21 @@ This operation does not require authentication
 
 <h1 id="fastify-message-center--">消息记录</h1>
 
-## get__api_v1_record
+## get__api_v1_record_get
 
-`GET /api/v1/record`
+`GET /api/v1/record/get`
 
 *获取单条消息记录*
 
 获取单条消息记录
 
-<h3 id="get__api_v1_record-parameters">Parameters</h3>
+<h3 id="get__api_v1_record_get-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |id|query|string|true|none|
 
-<h3 id="get__api_v1_record-responses">Responses</h3>
+<h3 id="get__api_v1_record_get-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|

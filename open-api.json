@@ -81,7 +81,7 @@
         }
       }
     },
-    "/api/v1/message": {
+    "/api/v1/message/get": {
       "get": {
         "summary": "获取单条消息",
         "tags": [
@@ -119,7 +119,7 @@
         }
       }
     },
-    "/api/v1/record": {
+    "/api/v1/record/get": {
       "get": {
         "summary": "获取单条消息记录",
         "tags": [
