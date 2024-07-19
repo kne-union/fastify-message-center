@@ -69,9 +69,9 @@ Status Code **200**
 This operation does not require authentication
 </aside>
 
-## get__api_v1_sendMessage
+## get__api_v1_message_send
 
-`GET /api/v1/sendMessage`
+`GET /api/v1/message/send`
 
 *发送信息*
 
@@ -93,13 +93,13 @@ This operation does not require authentication
 }
 ```
 
-<h3 id="get__api_v1_sendmessage-responses">Responses</h3>
+<h3 id="get__api_v1_message_send-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|返回值说明|Inline|
 
-<h3 id="get__api_v1_sendmessage-responseschema">Response Schema</h3>
+<h3 id="get__api_v1_message_send-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -111,9 +111,9 @@ Status Code **200**
 This operation does not require authentication
 </aside>
 
-## get__api_v1_resendMessage
+## get__api_v1_message_resend
 
-`GET /api/v1/resendMessage`
+`GET /api/v1/message/resend`
 
 *重新发送信息*
 
@@ -135,13 +135,13 @@ This operation does not require authentication
 }
 ```
 
-<h3 id="get__api_v1_resendmessage-responses">Responses</h3>
+<h3 id="get__api_v1_message_resend-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|返回值说明|Inline|
 
-<h3 id="get__api_v1_resendmessage-responseschema">Response Schema</h3>
+<h3 id="get__api_v1_message_resend-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -179,15 +179,15 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-## get__api_v1_messageList
+## get__api_v1_message_list
 
-`GET /api/v1/messageList`
+`GET /api/v1/message/list`
 
 *获取消息列表*
 
 获取消息列表
 
-<h3 id="get__api_v1_messagelist-responses">Responses</h3>
+<h3 id="get__api_v1_message_list-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -223,13 +223,13 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-## get__api_v1_recordList
+## get__api_v1_record_list
 
-`GET /api/v1/recordList`
+`GET /api/v1/record/list`
 
 *获取消息记录列表*
 
-<h3 id="get__api_v1_recordlist-parameters">Parameters</h3>
+<h3 id="get__api_v1_record_list-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -237,7 +237,60 @@ This operation does not require authentication
 |currentPage|query|number|false|none|
 |perPage|query|number|false|none|
 
-<h3 id="get__api_v1_recordlist-responses">Responses</h3>
+<h3 id="get__api_v1_record_list-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="fastify-message-center--">模板</h1>
+
+## post__api_v1_template_add
+
+`POST /api/v1/template/add`
+
+*添加模板*
+
+添加模板
+
+> Body parameter
+
+```json
+{
+  "type": "object",
+  "required": [
+    "name",
+    "type",
+    "template"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "template": {
+      "type": "string"
+    }
+  }
+}
+```
+
+<h3 id="post__api_v1_template_add-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|true|none|
+|» name|body|string|true|none|
+|» type|body|string|true|none|
+|» template|body|string|true|none|
+
+<h3 id="post__api_v1_template_add-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
