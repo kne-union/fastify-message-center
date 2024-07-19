@@ -15,8 +15,18 @@ module.exports = fp(async fastify => {
     return await models.template.findByPk(id);
   };
 
+  const updateTemplate = async ({ id, name, type, template }) => {
+    const curTemplate = getTemplate({ id });
+    return await curTemplate.update({
+      name,
+      type,
+      template
+    });
+  };
+
   services.template = {
     addTemplate,
-    getTemplate
+    getTemplate,
+    updateTemplate
   };
 });

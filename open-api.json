@@ -12,6 +12,9 @@
     "/api/v1/sendEmail": {
       "get": {
         "summary": "发送邮件",
+        "tags": [
+          "消息"
+        ],
         "description": "发送邮件",
         "responses": {
           "200": {
@@ -36,6 +39,9 @@
     "/api/v1/message/send": {
       "get": {
         "summary": "发送信息",
+        "tags": [
+          "消息"
+        ],
         "description": "发送信息",
         "responses": {
           "200": {
@@ -60,6 +66,9 @@
     "/api/v1/message/resend": {
       "get": {
         "summary": "重新发送信息",
+        "tags": [
+          "消息"
+        ],
         "description": "重新发送信息",
         "responses": {
           "200": {
@@ -231,7 +240,7 @@
       "get": {
         "summary": "获取单条模板",
         "tags": [
-          "消息记录"
+          "模板"
         ],
         "description": "获取单条模板",
         "parameters": [
@@ -241,6 +250,54 @@
             },
             "in": "query",
             "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/template/update": {
+      "get": {
+        "summary": "修改模板",
+        "tags": [
+          "模板"
+        ],
+        "description": "修改模板",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "name",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "type",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "template",
             "required": true
           }
         ],

@@ -25,7 +25,7 @@ headingLevel: 2
 
 消息中心
 
-<h1 id="fastify-message-center-default">Default</h1>
+<h1 id="fastify-message-center--">消息</h1>
 
 ## get__api_v1_sendEmail
 
@@ -153,8 +153,6 @@ Status Code **200**
 This operation does not require authentication
 </aside>
 
-<h1 id="fastify-message-center--">消息</h1>
-
 ## get__api_v1_message_get
 
 `GET /api/v1/message/get`
@@ -247,30 +245,6 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-## get__api_v1_template_get
-
-`GET /api/v1/template/get`
-
-*获取单条模板*
-
-获取单条模板
-
-<h3 id="get__api_v1_template_get-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|id|query|string|true|none|
-
-<h3 id="get__api_v1_template_get-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
 <h1 id="fastify-message-center--">模板</h1>
 
 ## post__api_v1_template_add
@@ -315,6 +289,57 @@ This operation does not require authentication
 |» template|body|string|true|none|
 
 <h3 id="post__api_v1_template_add-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_template_get
+
+`GET /api/v1/template/get`
+
+*获取单条模板*
+
+获取单条模板
+
+<h3 id="get__api_v1_template_get-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|query|string|true|none|
+
+<h3 id="get__api_v1_template_get-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_template_update
+
+`GET /api/v1/template/update`
+
+*修改模板*
+
+修改模板
+
+<h3 id="get__api_v1_template_update-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|id|query|string|true|none|
+|name|query|string|true|none|
+|type|query|string|true|none|
+|template|query|string|true|none|
+
+<h3 id="get__api_v1_template_update-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|

@@ -43,7 +43,7 @@ module.exports = fp(async (fastify, options) => {
     {
       onRequest: [],
       schema: {
-        tags: ['消息记录'],
+        tags: ['模板'],
         description: '获取单条模板',
         summary: '获取单条模板',
         query: {
@@ -58,6 +58,33 @@ module.exports = fp(async (fastify, options) => {
     async request => {
       return {
         data: await services.template.getTemplate(request.query)
+      };
+    }
+  );
+
+  fastify.get(
+    `${options.prefix}/template/update`,
+    {
+      onRequest: [],
+      schema: {
+        tags: ['模板'],
+        description: '修改模板',
+        summary: '修改模板',
+        query: {
+          type: 'object',
+          required: ['id', 'name', 'type', 'template'],
+          properties: {
+            id: { type: 'string' },
+            name: { type: 'string' },
+            type: { type: 'string' },
+            template: { type: 'string' }
+          }
+        }
+      }
+    },
+    async request => {
+      return {
+        data: await services.template.updateTemplate(request.query)
       };
     }
   );
