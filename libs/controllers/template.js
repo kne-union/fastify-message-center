@@ -88,4 +88,43 @@ module.exports = fp(async (fastify, options) => {
       };
     }
   );
+
+  fastify.get(
+    `${options.prefix}/template/list`,
+    {
+      onRequest: [],
+      schema: {
+        tags: ['模板'],
+        description: '获取模板列表',
+        summary: '获取模板列表',
+        query: {
+          type: 'object',
+          properties: {
+            filter: {
+              type: 'object',
+              properties: {
+                id: { type: 'string' },
+                name: { type: 'string' },
+                type: { type: 'string' }
+              }
+            },
+            currentPage: { type: 'number' },
+            perPage: { type: 'number' }
+          }
+        }
+      }
+    },
+    async request => {
+      const { perPage, currentPage, ...filter } = Object.assign(
+        {
+          perPage: 20,
+          currentPage: 1
+        },
+        request.query
+      );
+      return {
+        data: await services.template.getTemplateList({ filter, perPage, currentPage })
+      };
+    }
+  );
 });

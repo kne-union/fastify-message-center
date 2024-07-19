@@ -378,5 +378,31 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
+## get__api_v1_template_list
+
+`GET /api/v1/template/list`
+
+*获取模板列表*
+
+获取模板列表
+
+<h3 id="get__api_v1_template_list-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|filter|query|object|false|none|
+|currentPage|query|number|false|none|
+|perPage|query|number|false|none|
+
+<h3 id="get__api_v1_template_list-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 # Schemas
 
