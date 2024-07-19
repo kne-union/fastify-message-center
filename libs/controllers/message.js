@@ -7,6 +7,7 @@ module.exports = fp(async (fastify, options) => {
     {
       onRequest: [],
       schema: {
+        tags: ['消息'],
         description: '发送邮件',
         summary: '发送邮件',
         query: {},
@@ -48,6 +49,7 @@ module.exports = fp(async (fastify, options) => {
     {
       onRequest: [],
       schema: {
+        tags: ['消息'],
         description: '发送信息',
         summary: '发送信息',
         query: {},
@@ -93,6 +95,7 @@ module.exports = fp(async (fastify, options) => {
     {
       onRequest: [],
       schema: {
+        tags: ['消息'],
         description: '重新发送信息',
         summary: '重新发送信息',
         query: {},
