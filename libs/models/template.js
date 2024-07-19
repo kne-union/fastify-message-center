@@ -14,7 +14,7 @@ module.exports = ({ DataTypes }) => {
       indexes: [
         {
           unique: true,
-          fields: ['deleted_at']
+          fields: ['name', 'deleted_at']
         }
       ]
     }
