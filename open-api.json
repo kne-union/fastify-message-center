@@ -33,7 +33,7 @@
         }
       }
     },
-    "/api/v1/sendMessage": {
+    "/api/v1/message/send": {
       "get": {
         "summary": "发送信息",
         "description": "发送信息",
@@ -57,7 +57,7 @@
         }
       }
     },
-    "/api/v1/resendMessage": {
+    "/api/v1/message/resend": {
       "get": {
         "summary": "重新发送信息",
         "description": "重新发送信息",
@@ -105,7 +105,7 @@
         }
       }
     },
-    "/api/v1/messageList": {
+    "/api/v1/message/list": {
       "get": {
         "summary": "获取消息列表",
         "tags": [
@@ -143,7 +143,7 @@
         }
       }
     },
-    "/api/v1/recordList": {
+    "/api/v1/record/list": {
       "get": {
         "summary": "获取消息记录列表",
         "tags": [
@@ -180,6 +180,46 @@
             "required": false
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/template/add": {
+      "post": {
+        "summary": "添加模板",
+        "tags": [
+          "模板"
+        ],
+        "description": "添加模板",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "type",
+                  "template"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "template": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Default Response"
