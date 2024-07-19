@@ -53,14 +53,14 @@ module.exports = fp(async (fastify, options) => {
     if (type === 'EMAIL' && template && template[type]) {
       const currentTemplate = template[type];
       const content = tpl(currentTemplate.content)(props);
-      const info = await sendEmail({ subject: currentTemplate.subject, [currentTemplate.type || 'html']: content, to });
+      const info = await sendEmail({ subject: currentTemplate.subject, [currentTemplate.type || 'html']: content, to: to.join(', ') });
       await services.message.addMessage({
         messageType,
         type,
         channel,
         subject: currentTemplate.subject,
         content,
-        email: to
+        email: to.join(', ')
       });
       return info;
     }

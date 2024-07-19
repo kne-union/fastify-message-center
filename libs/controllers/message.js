@@ -3,14 +3,23 @@ const fp = require('fastify-plugin');
 module.exports = fp(async (fastify, options) => {
   const { models, services } = fastify.messageCenter;
   fastify.get(
-    `${options.prefix}/sendEmail`,
+    `${options.prefix}/email/send`,
     {
       onRequest: [],
       schema: {
         tags: ['消息'],
         description: '发送邮件',
         summary: '发送邮件',
-        query: {},
+        query: {
+          type: 'object',
+          required: ['subject', 'to'],
+          properties: {
+            subject: { type: 'string' },
+            text: { type: 'string' },
+            html: { type: 'string' },
+            to: { type: 'array', items: { type: 'string' } }
+          }
+        },
         response: {
           200: {
             description: '返回值说明',
@@ -34,11 +43,11 @@ module.exports = fp(async (fastify, options) => {
           Object.assign(
             {},
             {
-              to: '2283785225@qq.com',
+              to: ['28ssss@qq.com'],
               subject: '登录验证码',
               text: 'Hi, the code is 999000'
             },
-            request.params
+            request.query
           )
         )
       };
@@ -52,7 +61,17 @@ module.exports = fp(async (fastify, options) => {
         tags: ['消息'],
         description: '发送信息',
         summary: '发送信息',
-        query: {},
+        query: {
+          type: 'object',
+          required: [],
+          properties: {
+            messageType: { type: 'string' },
+            type: { type: 'string' },
+            to: { type: 'array', items: { type: 'string' } },
+            channel: { type: 'string' },
+            props: { type: 'object' }
+          }
+        },
         response: {
           200: {
             description: '返回值说明',
@@ -78,13 +97,13 @@ module.exports = fp(async (fastify, options) => {
             {
               messageType: 'LOGIN_VERIFY',
               type: 'EMAIL',
-              to: '228ssss25@qq.com',
+              to: ['28ssss@qq.com'],
               props: {
                 name: 'Meetacoo',
                 code: '888888'
               }
             },
-            request.params
+            request.query
           )
         )
       };
