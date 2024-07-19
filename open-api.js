@@ -50,6 +50,8 @@ fastify.register(require('fastify-plugin')(async (fastify) => {
   await fastify.sequelize.sync();
 }));
 
+fastify.register(require('@kne/fastify-response-data-format'));
+
 fastify.ready().then(async () => {
   const api = fastify.swagger();
   await fs.writeFile(path.resolve(__dirname, './open-api.json'), JSON.stringify(api, null, 2));

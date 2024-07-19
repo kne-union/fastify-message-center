@@ -87,6 +87,8 @@ const createServer = async () => {
     await fastify.sequelize.sync();
   }));
 
+  fastify.register(require('@kne/fastify-response-data-format'));
+
 }
 
 module.exports = {

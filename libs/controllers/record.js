@@ -21,9 +21,7 @@ module.exports = fp(async (fastify, options) => {
       }
     },
     async request => {
-      return {
-        data: await services.record.getRecord(request.query)
-      };
+      return await services.record.getRecord(request.query);
     }
   );
 
@@ -57,9 +55,7 @@ module.exports = fp(async (fastify, options) => {
         },
         request.query
       );
-      return {
-        data: await services.record.getRecordList({ filter, perPage, currentPage })
-      };
+      return await services.record.getRecordList({ filter, perPage, currentPage });
     }
   );
 });

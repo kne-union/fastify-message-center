@@ -136,9 +136,7 @@ module.exports = fp(async (fastify, options) => {
       }
     },
     async request => {
-      return {
-        data: await services.message.resendMessage(request.query)
-      };
+      return await services.message.resendMessage(request.query);
     }
   );
 
@@ -160,9 +158,7 @@ module.exports = fp(async (fastify, options) => {
       }
     },
     async request => {
-      return {
-        data: await services.message.getMessage(request.query)
-      };
+      return await services.message.getMessage(request.query);
     }
   );
 
@@ -185,9 +181,7 @@ module.exports = fp(async (fastify, options) => {
         },
         request.query
       );
-      return {
-        data: await services.message.getMessageList({ filter, perPage, currentPage })
-      };
+      return await services.message.getMessageList({ filter, perPage, currentPage });
     }
   );
 });
