@@ -62,7 +62,7 @@ module.exports = fp(async (fastify, options) => {
     }
   );
 
-  fastify.get(
+  fastify.post(
     `${options.prefix}/template/update`,
     {
       onRequest: [],
@@ -70,7 +70,7 @@ module.exports = fp(async (fastify, options) => {
         tags: ['模板'],
         description: '修改模板',
         summary: '修改模板',
-        query: {
+        body: {
           type: 'object',
           required: ['id', 'name', 'type', 'template'],
           properties: {
@@ -84,7 +84,7 @@ module.exports = fp(async (fastify, options) => {
     },
     async request => {
       return {
-        data: await services.template.updateTemplate(request.query)
+        data: await services.template.updateTemplate(request.body)
       };
     }
   );

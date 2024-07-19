@@ -322,24 +322,53 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-## get__api_v1_template_update
+## post__api_v1_template_update
 
-`GET /api/v1/template/update`
+`POST /api/v1/template/update`
 
 *修改模板*
 
 修改模板
 
-<h3 id="get__api_v1_template_update-parameters">Parameters</h3>
+> Body parameter
+
+```json
+{
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "type",
+    "template"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "template": {
+      "type": "string"
+    }
+  }
+}
+```
+
+<h3 id="post__api_v1_template_update-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|id|query|string|true|none|
-|name|query|string|true|none|
-|type|query|string|true|none|
-|template|query|string|true|none|
+|body|body|object|true|none|
+|» id|body|string|true|none|
+|» name|body|string|true|none|
+|» type|body|string|true|none|
+|» template|body|string|true|none|
 
-<h3 id="get__api_v1_template_update-responses">Responses</h3>
+<h3 id="post__api_v1_template_update-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
