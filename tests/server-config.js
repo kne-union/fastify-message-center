@@ -11,10 +11,13 @@ const createServer = async () => {
     dotenv: true,
     data: process.env,
     schema: {
-      type: 'object', required: ['DB_HOST', 'DB_EMAIL', 'DB_PASS'], properties: {
+      type: 'object', required: ['DB_HOST', 'DB_EMAIL', 'DB_PASS', 'DB_ACCOUNT_SID',
+        'DB_AUTH_TOKEN'], properties: {
         DB_HOST: {type: 'string'},
         DB_EMAIL: {type: 'string'},
         DB_PASS: {type: 'string'},
+        DB_ACCOUNT_SID: {type: 'string'},
+        DB_AUTH_TOKEN: {type: 'string'},
         ENV: {type: 'string'},
         PORT: {type: 'number'}
       }
