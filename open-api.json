@@ -9,13 +9,50 @@
     "schemas": {}
   },
   "paths": {
-    "/api/v1/sendEmail": {
+    "/api/v1/email/send": {
       "get": {
         "summary": "发送邮件",
         "tags": [
           "消息"
         ],
         "description": "发送邮件",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "subject",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "text",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "html",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "to",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "返回值说明",
@@ -43,6 +80,51 @@
           "消息"
         ],
         "description": "发送信息",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "messageType",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "type",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "to",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "channel",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "query",
+            "name": "props",
+            "required": false
+          }
+        ],
         "responses": {
           "200": {
             "description": "返回值说明",

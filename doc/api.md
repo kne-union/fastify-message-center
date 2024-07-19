@@ -27,13 +27,22 @@ headingLevel: 2
 
 <h1 id="fastify-message-center--">消息</h1>
 
-## get__api_v1_sendEmail
+## get__api_v1_email_send
 
-`GET /api/v1/sendEmail`
+`GET /api/v1/email/send`
 
 *发送邮件*
 
 发送邮件
+
+<h3 id="get__api_v1_email_send-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|subject|query|string|true|none|
+|text|query|string|false|none|
+|html|query|string|false|none|
+|to|query|array[string]|true|none|
 
 > Example responses
 
@@ -51,13 +60,13 @@ headingLevel: 2
 }
 ```
 
-<h3 id="get__api_v1_sendemail-responses">Responses</h3>
+<h3 id="get__api_v1_email_send-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|返回值说明|Inline|
 
-<h3 id="get__api_v1_sendemail-responseschema">Response Schema</h3>
+<h3 id="get__api_v1_email_send-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -76,6 +85,16 @@ This operation does not require authentication
 *发送信息*
 
 发送信息
+
+<h3 id="get__api_v1_message_send-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|messageType|query|string|false|none|
+|type|query|string|false|none|
+|to|query|array[string]|false|none|
+|channel|query|string|false|none|
+|props|query|object|false|none|
 
 > Example responses
 
