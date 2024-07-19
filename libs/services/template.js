@@ -11,7 +11,12 @@ module.exports = fp(async fastify => {
     });
   };
 
+  const getTemplate = async ({ id }) => {
+    return await models.template.findByPk(id);
+  };
+
   services.template = {
-    addTemplate
+    addTemplate,
+    getTemplate
   };
 });
