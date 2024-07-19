@@ -4,7 +4,7 @@ module.exports = fp(async (fastify, options) => {
   const { models, services } = fastify.messageCenter;
 
   fastify.get(
-    `${options.prefix}/record`,
+    `${options.prefix}/record/get`,
     {
       onRequest: [],
       schema: {

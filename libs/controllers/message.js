@@ -121,7 +121,7 @@ module.exports = fp(async (fastify, options) => {
   );
 
   fastify.get(
-    `${options.prefix}/message`,
+    `${options.prefix}/message/get`,
     {
       onRequest: [],
       schema: {
