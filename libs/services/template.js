@@ -65,7 +65,7 @@ module.exports = fp(async fastify => {
   const deleteTemplate = async ({ id }) => {
     const curTemplate = await getTemplate({ id });
     await curTemplate.destroy();
-    return '模板已删除';
+    return null;
   };
 
   services.template = {
