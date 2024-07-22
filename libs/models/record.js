@@ -6,30 +6,19 @@ module.exports = ({ DataTypes }) => {
         autoIncrement: true,
         primaryKey: true
       },
-      uuid: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4
-      },
-      sendTimes: {
-        // 发送次数
-        type: DataTypes.INTEGER,
-        defaultValue: 0
-      },
-      status: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0 // 0:发送成功; 10:发送失败;
-      },
-      messageType: DataTypes.STRING, // 渠道模板类型
-      channel: DataTypes.STRING, // 发送渠道
-      content: DataTypes.STRING // 发送内容
+      messageType: DataTypes.STRING, // 模板类型
+      type: {
+        type: DataTypes.ENUM,
+        values: ['EMAIL', 'SMS']
+      }, // 发送类型 EMAIL,SMS
+      channel: DataTypes.STRING, // 发送渠道,
+      messageId: DataTypes.INTEGER // 字段用于记录这个记录是属于哪个消息的
     },
-    options: {
-      indexes: [
-        {
-          unique: true,
-          fields: ['uuid']
-        }
-      ]
+    associate: ({ record, message }) => {
+      record.belongsTo(message, {
+        targetKey: 'id',
+        constraints: false
+      });
     }
   };
 };

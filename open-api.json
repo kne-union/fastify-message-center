@@ -9,10 +9,50 @@
     "schemas": {}
   },
   "paths": {
-    "/api/v1/welcome": {
+    "/api/v1/email/send": {
       "get": {
-        "summary": "接口主题",
-        "description": "接口说明",
+        "summary": "发送邮件",
+        "tags": [
+          "消息"
+        ],
+        "description": "发送邮件",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "subject",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "text",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "html",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "to",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "返回值说明",
@@ -21,7 +61,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
+                    "data": {
                       "type": "string",
                       "description": "信息"
                     }
@@ -29,6 +69,401 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/v1/message/send": {
+      "get": {
+        "summary": "发送信息",
+        "tags": [
+          "消息"
+        ],
+        "description": "发送信息",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "messageType",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "type",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "to",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "channel",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "query",
+            "name": "props",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "返回值说明",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "description": "信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/message/resend": {
+      "get": {
+        "summary": "重新发送信息",
+        "tags": [
+          "消息"
+        ],
+        "description": "重新发送信息",
+        "responses": {
+          "200": {
+            "description": "返回值说明",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "description": "信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/message/get": {
+      "get": {
+        "summary": "获取单条消息",
+        "tags": [
+          "消息"
+        ],
+        "description": "获取单条消息",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/message/list": {
+      "get": {
+        "summary": "获取消息列表",
+        "tags": [
+          "消息"
+        ],
+        "description": "获取消息列表",
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/record/get": {
+      "get": {
+        "summary": "获取单条消息记录",
+        "tags": [
+          "消息记录"
+        ],
+        "description": "获取单条消息记录",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/record/list": {
+      "get": {
+        "summary": "获取消息记录列表",
+        "tags": [
+          "消息记录"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            },
+            "in": "query",
+            "name": "filter",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "currentPage",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "perPage",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/template/add": {
+      "post": {
+        "summary": "添加模板",
+        "tags": [
+          "模板"
+        ],
+        "description": "添加模板",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "type",
+                  "template"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "template": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/template/get": {
+      "get": {
+        "summary": "获取单条模板",
+        "tags": [
+          "模板"
+        ],
+        "description": "获取单条模板",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/template/update": {
+      "post": {
+        "summary": "修改模板",
+        "tags": [
+          "模板"
+        ],
+        "description": "修改模板",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "type",
+                  "template"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "template": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/template/list": {
+      "get": {
+        "summary": "获取模板列表",
+        "tags": [
+          "模板"
+        ],
+        "description": "获取模板列表",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              }
+            },
+            "in": "query",
+            "name": "filter",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "currentPage",
+            "required": false
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "perPage",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default Response"
+          }
+        }
+      }
+    },
+    "/api/v1/template/delete": {
+      "post": {
+        "summary": "删除模板",
+        "tags": [
+          "模板"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response"
           }
         }
       }
