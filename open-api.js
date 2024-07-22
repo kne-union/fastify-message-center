@@ -13,7 +13,7 @@ fastify.register(require('@fastify/swagger'), {
   }
 });
 
-const sqliteStorage = path.resolve('./database.sqlite');
+const sqliteStorage = path.resolve('./tests/database.sqlite');
 
 fastify.register(require('@kne/fastify-sequelize'), {
   db: {
