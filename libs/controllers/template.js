@@ -119,4 +119,26 @@ module.exports = fp(async (fastify, options) => {
       return await services.template.getTemplateList({ filter, perPage, currentPage });
     }
   );
+
+  fastify.post(
+    `${options.prefix}/template/delete`,
+    {
+      onRequest: [],
+      schema: {
+        tags: ['模板'],
+        summary: '删除模板',
+        body: {
+          type: 'object',
+          required: ['id'],
+          properties: {
+            id: { type: 'string' }
+          }
+        }
+      }
+    },
+    async request => {
+      await services.template.deleteTemplate(request.body);
+      return '模板删除成功';
+    }
+  );
 });

@@ -62,11 +62,18 @@ module.exports = fp(async fastify => {
     return { pageData: rows, totalCount: rows.length };
   };
 
+  const deleteTemplate = async ({ id }) => {
+    const curTemplate = await getTemplate({ id });
+    await curTemplate.destroy();
+    return '模板已删除';
+  };
+
   services.template = {
     templateIsExists,
     addTemplate,
     getTemplate,
     updateTemplate,
-    getTemplateList
+    getTemplateList,
+    deleteTemplate
   };
 });
