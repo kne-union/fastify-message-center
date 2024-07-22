@@ -446,6 +446,45 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
+## post__api_v1_template_delete
+
+`POST /api/v1/template/delete`
+
+*删除模板*
+
+> Body parameter
+
+```json
+{
+  "type": "object",
+  "required": [
+    "id"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}
+```
+
+<h3 id="post__api_v1_template_delete-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|true|none|
+|» id|body|string|true|none|
+
+<h3 id="post__api_v1_template_delete-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Default Response|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 # Schemas
 
 
